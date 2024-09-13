@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 목록</title>
+</head>
+<body>
+    <h1>게시글 목록</h1>
+    <hr>
+    <ul>
+        <li th:each="post : ${posts}">
+            <a th:href="@{/posts/{id}(id=${post.id})}" th:text="${post.title}">
+                게시글 제목
+            </a>
+            - <span th:text="${post.author}"> 작성자 </span>
+        </li>
+    </ul>
+    <hr>
+    <a th:href="@{/posts/create}">게시글 작성</a>
+</body>
+</html>
