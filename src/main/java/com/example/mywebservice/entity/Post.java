@@ -10,7 +10,6 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name="posts")
 @Getter
-@Setter
 @NoArgsConstructor
 public class Post {
 
@@ -28,6 +27,13 @@ public class Post {
     }
 
     public Post(String title, String content, String author){
+        this.title = title;
+        this.content = content;
+        this.author = author;
+    }
+
+    // 상태를 변경하는 명시적 update 메서드
+    public void update(String title, String content, String author) {
         this.title = title;
         this.content = content;
         this.author = author;

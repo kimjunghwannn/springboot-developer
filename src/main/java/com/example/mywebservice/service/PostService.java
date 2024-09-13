@@ -38,12 +38,10 @@ public class PostService {
     }
 
     // 게시글 수정하기
-    public PostDto updatePost(Long id, PostDto postDto) {
+    public PostDto updatePost(Long id, PostDto updatedPostDto) {
         return postRepository.findById(id)
                 .map(post -> {
-                    post.setTitle(postDto.getTitle());
-                    post.setContent(postDto.getContent());
-                    post.setAuthor(postDto.getAuthor());
+                    post.update(updatedPostDto.getTitle(), updatedPostDto.getContent(), updatedPostDto.getAuthor());  // setter 대신 update 메서드 사용
                     return convertToDto(postRepository.save(post));
                 })
                 .orElseThrow(() -> new RuntimeException("Post not found"));
