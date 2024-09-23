@@ -3,20 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <title>게시글 목록</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
+    <style>
+        .gradient-custom {
+            background: linear-gradient(to right, rgba(174, 239, 222, 1), rgba(147, 226, 209, 1)); /* 민트색 그라데이션 */
+        }
+        .card {
+            background-color: #ffffff; /* 흰색 카드 배경 */
+            border-radius: 1rem;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
+        }
+        .list-group-item {
+            background-color: #f8f9fa; /* 리스트 아이템 배경 */
+            border: 1px solid #dee2e6;
+        }
+    </style>
 </head>
-<body>
-    <h1>게시글 목록</h1>
-    <a th:href="@{/logout}">로그아웃</a>
-    <hr>
-    <ul>
-        <li th:each="post : ${posts}">
-            <a th:href="@{/posts/{id}(id=${post.id})}" th:text="${post.title}">
-                게시글 제목
-            </a>
-            - <span th:text="${post.author}"> 작성자 </span>
-        </li>
-    </ul>
-    <hr>
-    <a th:href="@{/posts/create}">게시글 작성</a>
+<body class="gradient-custom">
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card p-4">
+                <h1 class="text-center">게시글 목록</h1>
+                <div class="text-right mb-3">
+                    <a th:href="@{/logout}" class="btn btn-outline-danger">로그아웃</a>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item" th:each="post : ${posts}">
+                        <a th:href="@{/posts/{id}(id=${post.id})}" th:text="${post.title}">게시글 제목</a>
+                        <span class="badge badge-secondary float-right" th:text="${post.author}">작성자</span>
+                    </li>
+                </ul>
+                <div class="text-right mt-3">
+                    <a th:href="@{/posts/create}" class="btn btn-primary">게시글 작성</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -3,14 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>게시글 작성</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
+    <style>
+        .gradient-custom {
+            background: linear-gradient(to right, rgba(174, 239, 222, 1), rgba(147, 226, 209, 1)); /* 민트색 그라데이션 */
+        }
+        .card {
+            background-color: #ffffff; /* 흰색 카드 배경 */
+            border-radius: 1rem;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
+        }
+    </style>
 </head>
-<body>
-    <h1>게시글 작성</h1>
-    <form th:action="@{/posts/create}" th:object="${post}" method="post">
-        <label>제목: <input type="text" th:field="*{title}" id="title"/></label><br>
-        <label>내용: <textarea th:field="*{content}" id="content"></textarea></label><br>
-        <label>작성자: <input type="text" th:field="*{author}" id="author"/></label><br>
-        <input type="submit" value="작성하기" /> <input type="reset" value="새로고침" />
-    </form>
+<body class="gradient-custom">
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card p-4">
+                <h1 class="text-center">게시글 작성</h1>
+                <form th:action="@{/posts/create}" th:object="${post}" method="post">
+                    <div class="form-group">
+                        <label for="title">제목</label>
+                        <input type="text" th:field="*{title}" id="title" class="form-control" placeholder="제목을 입력하세요">
+                    </div>
+                    <div class="form-group">
+                        <label for="content">내용</label>
+                        <textarea th:field="*{content}" id="content" class="form-control" rows="5" placeholder="내용을 입력하세요"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="author">작성자</label>
+                        <input type="text" th:field="*{author}" id="author" class="form-control" placeholder="작성자를 입력하세요">
+                    </div>
+                    <div class="d-flex justify-content-between mt-4">
+                        <button type="reset" class="btn btn-secondary">새로고침</button>
+                        <button type="submit" class="btn btn-primary">작성하기</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
