@@ -28,6 +28,7 @@
                 <h1 class="text-center">게시글 목록</h1>
                 <div class="text-right mb-3">
                     <a th:href="@{/logout}" class="btn btn-outline-danger">로그아웃</a>
+                    <a th:text="${nickname}"></a>
                 </div>
                 <ul class="list-group">
                     <li class="list-group-item" th:each="post : ${posts}">

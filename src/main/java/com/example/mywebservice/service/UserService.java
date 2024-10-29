@@ -19,8 +19,13 @@ public class UserService {
     public Long save(AddUserDto dto){
         User user = User.builder()
                 .email(dto.getEmail())
-                .password(bCryptPasswordEncoder.encode(dto.getPassword())) //패스워드 암호화
+                .password(bCryptPasswordEncoder.encode(dto.getPassword()))
+                .nickname(dto.getNickname())//패스워드 암호화
                 .build();
         return userRepository.save(user).getId();
+    }
+
+    public User findByEmail(String email){
+        return userRepository.findByEmail(email).orElseThrow();
     }
 }

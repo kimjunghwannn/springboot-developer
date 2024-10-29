@@ -33,10 +33,12 @@
                 <hr>
                 <p class="card-text" th:text="${post.content}">게시글 내용</p>
                 <div class="d-flex justify-content-between mt-4">
+                    <div th:if="${nickname == post.author}">
                     <a th:href="@{/posts/{id}/edit(id=${post.id})}" class="btn btn-primary">수정하기</a>
                     <form th:action="@{/posts/{id}/delete(id=${post.id})}" method="post">
                         <button type="submit" class="btn btn-danger">삭제하기</button>
                     </form>
+                    </div>
                 </div>
             </div>
         </div>
